@@ -6,7 +6,7 @@ The system analyzes resumes, evaluates interview answers, generates performance 
 
 ## 🚀 Live Demo
 
-(Add your Streamlit Cloud URL here)
+https://ai-mock-interview-system-etkv4rxdlv6fv7n2sfudze.streamlit.app/
 
 ## ✨ Features
 
