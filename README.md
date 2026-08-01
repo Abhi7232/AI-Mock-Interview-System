@@ -60,23 +60,3 @@ https://ai-mock-interview-system-etkv4rxdlv6fv7n2sfudze.streamlit.app/
 - Git & GitHub
 
 ## 📂 Project Structure
-
-## 📸 Application Screenshots
-
-### 🏠 Home Page
-![Home](screenshot/home.png)
-
-### 📄 Resume Analysis
-![Resume Analysis](screenshot/resume_analysis.png)
-
-### 🎤 AI Mock Interview
-![Mock Interview](screenshot/mock_interview.png)
-
-### 📊 Analytics Dashboard
-![Dashboard](screenshot/dashboard.png)
-
-### 🏆 Candidate Ranking
-![Ranking](screenshot/ranking.png)
-
-### 📑 PDF Report
-![Report](screenshot/report.png)
