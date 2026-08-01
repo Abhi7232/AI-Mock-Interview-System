@@ -60,3 +60,23 @@ The system analyzes resumes, evaluates interview answers, generates performance 
 - Git & GitHub
 
 ## 📂 Project Structure
+
+## 📸 Application Screenshots
+
+### 🏠 Home Page
+![Home](screenshots/home.png)
+
+### 📄 Resume Analysis
+![Resume Analysis](screenshots/resume_analysis.png)
+
+### 🎤 AI Mock Interview
+![Mock Interview](screenshots/mock_interview.png)
+
+### 📊 Analytics Dashboard
+![Dashboard](screenshots/dashboard.png)
+
+### 🏆 Candidate Ranking
+![Ranking](screenshots/ranking.png)
+
+### 📑 PDF Report
+![Report](screenshots/report.png)
