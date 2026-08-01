@@ -64,19 +64,19 @@ The system analyzes resumes, evaluates interview answers, generates performance 
 ## 📸 Application Screenshots
 
 ### 🏠 Home Page
-![Home](screenshots/home.png)
+![Home](screenshot/home.png)
 
 ### 📄 Resume Analysis
-![Resume Analysis](screenshots/resume_analysis.png)
+![Resume Analysis](screenshot/resume_analysis.png)
 
 ### 🎤 AI Mock Interview
-![Mock Interview](screenshots/mock_interview.png)
+![Mock Interview](screenshot/mock_interview.png)
 
 ### 📊 Analytics Dashboard
-![Dashboard](screenshots/dashboard.png)
+![Dashboard](screenshot/dashboard.png)
 
 ### 🏆 Candidate Ranking
-![Ranking](screenshots/ranking.png)
+![Ranking](screenshot/ranking.png)
 
 ### 📑 PDF Report
-![Report](screenshots/report.png)
+![Report](screenshot/report.png)
