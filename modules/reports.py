@@ -1,5 +1,6 @@
 import streamlit as st
 from utils.pdf_report import generate_pdf
+from utils.email_utils import send_report_email
 import os
 
 
@@ -13,13 +14,11 @@ def show():
 
     st.divider()
 
-
     # -------------------------
     # Resume Report
     # -------------------------
 
     st.subheader("📄 Resume Report")
-
 
     if "candidate_name" in st.session_state:
 
@@ -38,22 +37,9 @@ def show():
             0
         )
 
-
-        st.write(
-            "👤 Candidate Name:",
-            candidate_name
-        )
-
-        st.write(
-            "📧 Email:",
-            email
-        )
-
-        st.write(
-            "📊 ATS Score:",
-            f"{ats_score}/100"
-        )
-
+        st.write("👤 Candidate Name:", candidate_name)
+        st.write("📧 Email:", email)
+        st.write("📊 ATS Score:", f"{ats_score}/100")
 
     else:
 
@@ -61,10 +47,7 @@ def show():
             "No Resume Analysis data available."
         )
 
-
-
     st.divider()
-
 
     # -------------------------
     # Interview Report
@@ -72,42 +55,38 @@ def show():
 
     st.subheader("🎤 Interview Report")
 
-
-    if "overall_score" in st.session_state and st.session_state.overall_score > 0:
-
+    if (
+        "overall_score" in st.session_state
+        and st.session_state.overall_score > 0
+    ):
 
         overall_score = st.session_state.get(
             "overall_score",
             0
         )
 
-
         question_scores = st.session_state.get(
             "question_scores",
             []
         )
-
 
         st.write(
             "🎯 Overall Interview Score:",
             f"{overall_score}/10"
         )
 
-
         st.subheader(
             "📈 Question Wise Performance"
         )
-
 
         for i, score in enumerate(question_scores):
 
             st.write(
                 f"Question {i+1}: {score}/10"
             )
-
-
-
+        # -------------------------
         # Recommendation
+        # -------------------------
 
         if overall_score >= 8:
 
@@ -119,7 +98,6 @@ def show():
                 "⭐⭐⭐⭐⭐ Excellent Performance"
             )
 
-
         elif overall_score >= 6:
 
             recommendation = (
@@ -129,7 +107,6 @@ def show():
             st.info(
                 "⭐⭐⭐⭐ Good Performance"
             )
-
 
         elif overall_score >= 4:
 
@@ -141,7 +118,6 @@ def show():
                 "⭐⭐⭐ Average Performance"
             )
 
-
         else:
 
             recommendation = (
@@ -152,29 +128,13 @@ def show():
                 "⭐⭐ Needs Improvement"
             )
 
-
-
         st.divider()
 
+        st.subheader("📧 Download & Email Report")
 
-        # -------------------------
-        # PDF Report
-        # -------------------------
+        filename = "AI_Mock_Interview_Report.pdf"
 
-        st.subheader(
-            "📥 Download Report"
-        )
-
-
-        if st.button(
-            "Generate PDF Report"
-        ):
-
-
-            filename = (
-                "AI_Mock_Interview_Report.pdf"
-            )
-
+        if st.button("📧 Download & Email Report"):
 
             generate_pdf(
                 filename,
@@ -195,26 +155,55 @@ def show():
                 recommendation
             )
 
+            try:
+
+                receiver_email = st.session_state.get(
+                    "email",
+                    ""
+                )
+
+                if receiver_email:
+
+                    send_report_email(
+                        receiver_email,
+                        filename
+                    )
+
+                    st.success(
+                        f"✅ Report emailed successfully to {receiver_email}"
+                    )
+
+                else:
+
+                    st.warning(
+                        "⚠️ Candidate email not found."
+                    )
+
+            except Exception as e:
+
+                st.error(
+                    f"❌ Email sending failed: {e}"
+                )
+            # PDF Download
 
             with open(
                 filename,
                 "rb"
             ) as file:
 
-
                 st.download_button(
 
-                    label="⬇️ Download PDF",
+                    label="⬇️ Download PDF Report",
 
                     data=file,
 
                     file_name=filename,
 
-                    mime="application/pdf"
+                    mime="application/pdf",
+
+                    use_container_width=True
 
                 )
-
-
 
     else:
 
